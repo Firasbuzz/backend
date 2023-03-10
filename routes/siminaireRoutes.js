@@ -1,4 +1,12 @@
 const express = require("express");
+
+const siminaireRouter = express.Router();
+const {addSemiController} = require('../controllers/seminaireController')
+
+siminaireRouter.route('/sim/add').post(addSemiController)
+
+module.exports = siminaireRouter;
+/* const express = require("express");
 const Siminaire = require("../models/seminaire");
 
 const siminaireRouter = express.Router();
@@ -52,5 +60,4 @@ siminaireRouter.put("/update/:id", async (req, res) => {
     console.log(error);
   }
 });
-
-module.exports = siminaireRouter;
+ */

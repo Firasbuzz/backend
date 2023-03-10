@@ -59,13 +59,13 @@ userRouter.post("/login", loginRules(), Validation, async (req, res) => {
     const searchedUser = await User.findOne({ email });
     //if the email not exist
     if (!searchedUser) {
-      return res.status(400).send({ msg: "bad credential a" });
+      return res.status(400).send({ msg: "email n'existe pas" });
     }
     //password are
     const match = await bcrypt.compare(password, searchedUser.password);
 
     if (!match) {
-      return res.status(400).send({ msg: "bad credential b" });
+      return res.status(400).send({ msg: "mot de passe n'existe pas" });
     }
     //cree un token
     const payload = {
@@ -128,13 +128,24 @@ userRouter.delete("/delete/:id", async (req, res) => {
   }
 });
 // update user
+// update user
 userRouter.put("/update/:id", async (req, res) => {
-  try {
-    let result = await User.findByIdAndUpdate({_id:req.params.id},{$set:{...req.body}});
-    res.send({ msg: " user is updated" });
-  } catch (error) {
-    console.log(error);
+  const hashedPassword = async (password) => {
+    const salt = await bcrypt.genSalt(10)
+    password = await bcrypt.hash(password, salt)
+    return password
   }
-});
 
+  if (req.body.password) {
+    req.body.password = await hashedPassword(req.body.password)
+  }
+
+  const user = await User.findOneAndUpdate({ _id: req.params.id }, req.body, { new: true })
+
+  if (!user) {
+    return res.status(404).send("User not found")
+  }
+
+  res.status(200).send("User updated successfully")
+})
 module.exports = userRouter;
