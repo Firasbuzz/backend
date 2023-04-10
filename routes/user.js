@@ -109,6 +109,7 @@ userRouter.get("/all", async (req, res) => {
     console.log(error);
   }
 });
+
 //get user by id
 userRouter.get("/get/:id", async (req, res) => {
   try {

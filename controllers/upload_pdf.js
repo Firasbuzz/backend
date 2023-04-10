@@ -9,7 +9,7 @@ app.use(bodyParser.json());
 
 var upload_pdf=app.post('/upload_pdf/:id',function(req,res){
   var id=req.params.id;
-  var dir =`C://Users/pc/projetisg/front/IsgProject/src/assets/docs/${id}`
+  var dir =`C://Users/pc/projetisg/front2/IsgProject/src/assets/docs/${id}`
   if (!fs.existsSync(dir)) {
     fs.mkdirSync(dir,{recursive:true})
   }

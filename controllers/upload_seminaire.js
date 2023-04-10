@@ -8,7 +8,7 @@ app.use(bodyParser.json());
 
 var upload_seminaire = app.post('/upload_seminaire/:id',function(req,res){
   var id=req.params.id;
-  var dir =`C://Users/pc/projetisg/front/IsgProject/src/assets/img/seminaire/${id}`
+  var dir =`C://Users/pc/projetisg/front2/IsgProject/src/assets/img/seminaire/${id}`
   if (!fs.existsSync(dir)) {
     fs.mkdirSync(dir,{recursive:true})
   }
@@ -26,7 +26,7 @@ var upload_seminaire = app.post('/upload_seminaire/:id',function(req,res){
 
   res.end("File is uploaded");
   })
- console.log(id);
+ //console.log(id);
 
 });
 

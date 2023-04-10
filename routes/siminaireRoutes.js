@@ -1,11 +1,20 @@
 const express = require("express");
 
 const siminaireRouter = express.Router();
-const {addSemiController} = require('../controllers/seminaireController')
+const {addSemiController,addSeminaireIMGController,getAllSeminairesController,getSeminaireIMGByIdController,
+  getAllSeminairesIMGController,getSeminairesByIdController} = require('../controllers/seminaireController')
 
 siminaireRouter.route('/sim/add').post(addSemiController)
 
+siminaireRouter.route('/sim/img').post(addSeminaireIMGController)
+siminaireRouter.route('/sim/all').get(getAllSeminairesController)
+siminaireRouter.route('/sim/all/:id').get(getSeminairesByIdController)
+
+siminaireRouter.route('/sim/img/all').get(getAllSeminairesIMGController)
+siminaireRouter.route('/sim/img/all/:id').get(getSeminaireIMGByIdController)
+
 module.exports = siminaireRouter;
+
 /* const express = require("express");
 const Siminaire = require("../models/seminaire");
 

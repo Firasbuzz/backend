@@ -1,12 +1,46 @@
 
-const {addSeminaireservice} =require ('../services/seminaireService')
+const {addSeminaireservice,addSeminaireIMGService
+  ,getAllSeminaireService,
+  getAllSeminaireIMGService,
+  getSeminairebyIdservice,getSeminaireIMGByIdservice} =require ('../services/seminaireService')
 
 const addSemiController=async (req,res)=>{
     const seminaire= await addSeminaireservice({...req.body})
-    res.send({msg:'seminaire ajouté avec success'})
+    res.send({msg:'seminaire ajouté avec success',data:seminaire})
 }
 
-module.exports = {addSemiController};
+addSeminaireIMGController=async (req,res)=>{
+  
+  const seminaireImg= await addSeminaireIMGService({...req.body})
+  res.send({msg:'seminaire image ajouté avec success',data:seminaireImg})
+}
+
+
+  const getAllSeminairesController=async (req,res)=>{
+    const seminaire= await getAllSeminaireService()
+    res.send(seminaire)
+}
+
+const getAllSeminairesIMGController=async (req,res)=>{
+  const seminaire= await getAllSeminaireIMGService()
+  res.send(seminaire)
+}
+const getSeminairesByIdController=async (req,res)=>{
+  const id= req.params.id
+  const seminaire= await getSeminairebyIdservice(id)
+  res.send(seminaire)
+}
+getSeminaireIMGByIdController=async (req,res)=>{
+  const id= req.params.id
+  const seminaire= await getSeminaireIMGByIdservice(id)
+  const semiById=await getSeminairebyIdservice(id)
+ //const seminById= await getSeminairesByIdController(seminaire.map(x=>x.seminaire)[0])
+  res.send({img:seminaire,sem:semiById})
+}
+module.exports = {addSemiController,addSeminaireIMGController,
+  getAllSeminairesController,getAllSeminairesIMGController,
+  getSeminairesByIdController,getSeminaireIMGByIdController};
+
 
 /* const express = require("express");
 const Siminaire = require("../models/seminaire");

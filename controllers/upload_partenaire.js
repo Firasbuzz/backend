@@ -9,7 +9,7 @@ app.use(bodyParser.json());
 
 var upload_partenaire=app.post('/upload_partenaire/:id',function(req,res){
   var id=req.params.id;
-  var dir =`C://Users/pc/projetisg/front/IsgProject/src/assets/img/partenaire/${id}`
+  var dir =`C://Users/pc/projetisg/front2/IsgProject/src/assets/img/partenaire/${id}`
   if (!fs.existsSync(dir)) {
     fs.mkdirSync(dir,{recursive:true})
   }
