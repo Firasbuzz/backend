@@ -2,9 +2,10 @@ const express = require("express");
 
 const siminaireRouter = express.Router();
 const {addSemiController,addSeminaireIMGController,getAllSeminairesController,getSeminaireIMGByIdController,
-  getAllSeminairesIMGController,getSeminairesByIdController} = require('../controllers/seminaireController')
+  getAllSeminairesIMGController,getSeminairesByIdController,updateSeminaireStatusController} = require('../controllers/seminaireController')
 
 siminaireRouter.route('/sim/add').post(addSemiController)
+siminaireRouter.route('/sim/editstatus/:id').put(updateSeminaireStatusController)
 
 siminaireRouter.route('/sim/img').post(addSeminaireIMGController)
 siminaireRouter.route('/sim/all').get(getAllSeminairesController)

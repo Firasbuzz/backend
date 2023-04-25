@@ -6,7 +6,15 @@ const addSeminaireservice= (data)=>{
     const seminaire=Seminaire.create(data)
     return seminaire
 }
-
+// const updateSeminaireStatusService= (id,data)=>{
+//   const seminaire=Seminaire.findOneAndUpdate(id,data)
+ 
+//   return seminaire
+// }
+const updateSeminaireStatusService = async (id, data) => {
+  const seminaire = await Seminaire.findOneAndUpdate(id, data, { new: true });
+  return seminaire;
+}
 const addSeminaireIMGService= (data)=>{
     const seminaireImg=SeminaireImg.create(data)
     return seminaireImg
@@ -42,4 +50,4 @@ const getSeminaireIMGByIdservice= (id)=>{
 
 module.exports={addSeminaireservice,addSeminaireIMGService,
     getAllSeminaireService,getAllSeminaireIMGService,
-    getSeminairebyIdservice,getSeminaireIMGByIdservice}
+    getSeminairebyIdservice,getSeminaireIMGByIdservice,updateSeminaireStatusService}

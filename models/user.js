@@ -7,6 +7,7 @@ const userSchema = new schema({
   email: { type: String, require: true, unique: true },
   password: { type: String, require: true },
   isAdmin: { type: Boolean, default: false },
+  isResp: { type: Boolean, default: false },
 });
  
 

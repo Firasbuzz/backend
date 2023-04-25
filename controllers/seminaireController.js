@@ -2,11 +2,21 @@
 const {addSeminaireservice,addSeminaireIMGService
   ,getAllSeminaireService,
   getAllSeminaireIMGService,
-  getSeminairebyIdservice,getSeminaireIMGByIdservice} =require ('../services/seminaireService')
+  getSeminairebyIdservice,getSeminaireIMGByIdservice,updateSeminaireStatusService} =require ('../services/seminaireService')
 
 const addSemiController=async (req,res)=>{
     const seminaire= await addSeminaireservice({...req.body})
+    
     res.send({msg:'seminaire ajouté avec success',data:seminaire})
+  
+}
+updateSeminaireStatusController=async (req,res)=>{
+
+const id = req.params.id
+
+  const seminaire= await updateSeminaireStatusService(id,{...req.body})
+ console.log(req.body);
+  res.send({msg:'status modifié avec success',data:seminaire})
 }
 
 addSeminaireIMGController=async (req,res)=>{
@@ -39,7 +49,7 @@ getSeminaireIMGByIdController=async (req,res)=>{
 }
 module.exports = {addSemiController,addSeminaireIMGController,
   getAllSeminairesController,getAllSeminairesIMGController,
-  getSeminairesByIdController,getSeminaireIMGByIdController};
+  getSeminairesByIdController,getSeminaireIMGByIdController,updateSeminaireStatusController};
 
 
 /* const express = require("express");

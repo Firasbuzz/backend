@@ -16,7 +16,12 @@ const seminaireSchema = new schema({
   prixINsonli:{ type: Number},
   email:{ type: String},
   information:{ type: String},
-  InscriptionINFo:{type: String}
+  InscriptionINFo:{type: String},
+  status: {
+    type: String,
+    enum : ['APPROVED','INREVIEW','REJECTED'],
+    default: 'INREVIEW'
+},
   
 });
 
