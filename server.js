@@ -12,6 +12,9 @@
 //nouveau methode
 //app.use("/siminaire", require("./routes/siminaireRoutes"));
 const serminaireRouter=require('./routes/siminaireRoutes')
+ const userRouter=require('./routes/userRoutes')
+app.use("/", userRouter); 
+
 app.use("/siminaire", serminaireRouter);
 
 //ancien methode
@@ -20,6 +23,7 @@ app.use("/feedback",require("./routes/feedback"));
 app.use("/",require("./controllers/upload_seminaire"))
 app.use("/",require("./controllers/upload_partenaire"))
 app.use("/",require("./controllers/upload_pdf"))
+app.use("/",require("./controllers/upload_pdf_user"))
 
 //////
 app.listen(PORT, (err) =>
