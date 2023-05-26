@@ -12,12 +12,18 @@ app.use(bodyParser.json());
 var upload_pdf_user=app.post('/upload_pdf_user/:id',function(req,res){
   var id=req.params.id;
   var dir =`C://Users/pc/projetisg/front2/IsgProject/src/assets/user_docs/${id}`
+  var dir1 =`C://Users/pc/Downloads/velzonadmin-230/velzonadmin-230/Velzon 2.3.0/Angular/Angular/default/src/assets/user_docs/${id}`
+
   if (!fs.existsSync(dir)) {
     fs.mkdirSync(dir,{recursive:true})
+  }
+  if (!fs.existsSync(dir1)) {
+    fs.mkdirSync(dir1,{recursive:true})
   }
   multer({ storage :  multer.diskStorage({
     destination: function (req, file, callback) {
       callback(null, dir);
+      callback(null, dir1);
     },
     filename: function (req, file, callback) {
       callback(null, file.originalname);

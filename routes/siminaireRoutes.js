@@ -13,11 +13,32 @@ siminaireRouter.route('/sim/all/:id').get(getSeminairesByIdController)
 
 siminaireRouter.route('/sim/img/all').get(getAllSeminairesIMGController)
 siminaireRouter.route('/sim/img/all/:id').get(getSeminaireIMGByIdController)
+siminaireRouter.delete("/delete/:id", async (req, res) => {
+  try {
+    let result = await Siminaire.findByIdAndDelete(req.params.id);
+    res.send({ msg: " siminaire deleted" });
+  } catch (error) {
+    console.log(error);
+  }
+});
+siminaireRouter.put("/update/:id", async (req, res) => {
+  try {
+    let result = await Siminaire.findByIdAndUpdate(
+      { _id: req.params.id },
+      { $set: { ...req.body } }
+    );
+    res.send({ msg: " séminare is updated" });
+  } catch (error) {
+    console.log(error);
+  }
+});
 
+
+const Siminaire = require("../models/seminaireModel");
 module.exports = siminaireRouter;
 
 /* const express = require("express");
-const Siminaire = require("../models/seminaire");
+
 
 const siminaireRouter = express.Router();
 

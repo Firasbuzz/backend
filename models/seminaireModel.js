@@ -3,6 +3,9 @@ const schema=mongoose.Schema;
 
 const seminaireSchema = new schema({
   name: { type: String},
+  numIns:{ type: Number ,default:0},
+  idR:{ type: String},
+  NameR:{ type: String},
   description: { type: String},
   date: { type: Date},
   comite_Organisation: [String] ,
@@ -10,19 +13,20 @@ const seminaireSchema = new schema({
   adresse:{ type: String},
   lat:{ type: Number},
   lon:{ type: Number},
-  nem_tel:{type:String},
+  
   prixINsPro:{ type: Number},
   prixINscher:{ type: Number},
   prixINsonli:{ type: Number},
-  email:{ type: String},
+
   information:{ type: String},
-  InscriptionINFo:{type: String},
+  
   status: {
     type: String,
-    enum : ['APPROVED','INREVIEW','REJECTED'],
-    default: 'INREVIEW'
+    enum : ['APPROUVÉE','EN REVUE','REJETÉE'],
+    default: 'EN REVUE'
 },
   
+
 });
 
 

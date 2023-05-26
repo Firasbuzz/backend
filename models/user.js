@@ -8,6 +8,7 @@ const userSchema = new schema({
   password: { type: String, require: true },
   isAdmin: { type: Boolean, default: false },
   isResp: { type: Boolean, default: false },
+  grade:{type:String}
 });
  
 

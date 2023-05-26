@@ -10,8 +10,8 @@ const inscriptionSchema = new schema({
   jPaiement:{ type: String, require: false },
   addrese:{ type: String, require: false },
   Participation:{ type: String, require: false },
+  namS:{type: String},
   
-  numT:{ type: String, require: false },
   email:{ type: String, require: false },
   titerInsc:{
     type: String,
@@ -23,6 +23,7 @@ status: {
   default: 'EN REVUE'
 },
 pdf:{ type: String  },
+grade:{ type: String  },
 
 });
 
